@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ActionButton({
+export default function NextButton({
   children, 
   onPress = () => {},
   disabled = false
