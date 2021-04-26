@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TouchableOpacity, StyleSheet, Text} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 
 const styles = StyleSheet.create({
@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
 export default function ToolButton({name, onPress = () => {}}) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
