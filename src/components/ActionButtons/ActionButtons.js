@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
+        alignItems: "center",
         padding: 23,
     },
     text: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
 export default function ActionButtons({text, name, color, onPress = () => {}}) {
     return (
         <TouchableOpacity onPress={onPress} style={styles.container}>
-            <Text style={styles.text}>{text}</Text>
+            <Text style={[styles.text, {color: `${color}`}]}>{text}</Text>
             <Icon 
              type="material-community"
              name={name}
