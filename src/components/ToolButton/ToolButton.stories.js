@@ -10,7 +10,7 @@ storiesOf('ToolButton', module)
     <ToolButton onPress={action('clicked add button')} name="plus" />
   ))
   .add('Check', () => (
-    <ToolButton onPress={action('clicked check button')} name="arrow-right" />
+    <ToolButton onPress={action('clicked check button')} name="check" />
   ))
   .add('Check-all', () => (
     <ToolButton onPress={action('clicked check-all button')} name="check-all" />
