@@ -7,6 +7,15 @@ import SectionHeading from './SectionHeading';
 
 storiesOf('SectionHeading', module)
   .addDecorator(story => <View>{story()}</View>)
-  .add('number', () => (
-    <SectionHeading label={'1, 2, 3, 4, 5, 6, 7, 8, 9, 10'} />
+  .add('Select category', () => <SectionHeading label={'Select category'} />)
+  .add('Seen phrases', () => <SectionHeading label={'Seen phrases'} />)
+  .add('Learn phrases', () => <SectionHeading label={'Learn phrases'} />)
+  .add('Category', () => <SectionHeading label={'Category'} />)
+  .add('The phrase', () => <SectionHeading label={'The phrase'} />)
+  .add('Pick a solution', () => <SectionHeading label={'Pick a solution'} />)
+  .add('The phrase in English', () => (
+    <SectionHeading label={'The phrase in English'} />
+  ))
+  .add('The phrase in Malagasy', () => (
+    <SectionHeading label={'The phrase in Malagasy'} />
   ));
