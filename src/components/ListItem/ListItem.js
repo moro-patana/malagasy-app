@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {FlatList} from 'react-native';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    margin: 20,
-  },
   list: {
     display: 'flex',
     flexDirection: 'row',
@@ -16,33 +11,39 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E5E5E5',
   },
+  listText: {
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: 16,
+    lineHeight: 19,
+    color: '#111827',
+  },
   button: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
+  },
+  buttonText: {
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 19,
+    textAlign: 'right',
+    color: '#06B6D4',
+    padding: 10,
   },
 });
 
 export default function ListItem({data, onPress = () => {}}) {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={({item}) => (
-          <View style={styles.list}>
-            <Text>{item.key}</Text>
-            <TouchableOpacity style={styles.button}>
-              <Text style={{color: '#06B6D4'}}>Learn</Text>
-              <Icon
-                type="material-community"
-                name="arrow-right"
-                color="#06B6D4"
-              />
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+    <View style={styles.list}>
+      <Text style={styles.listText}>{data}</Text>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text style={styles.buttonText}>Learn</Text>
+        <Icon type="material-community" name="arrow-right" color="#06B6D4" />
+      </TouchableOpacity>
     </View>
   );
 }
