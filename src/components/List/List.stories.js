@@ -7,10 +7,10 @@ import ListItem from '../ListItem/ListItem';
 
 storiesOf('List', module)
   .addDecorator(story => <View style={{padding: 23}}>{story()}</View>)
-  .add('List', () => (
+  .add('Category List', () => (
     <List
       renderItem={({item}) => (
-        <ListItem text={item.title} onPress={action(`${item.key}`)} />
+        <ListItem text={item.title} onPress={action(`clicked ${item.title}`)} />
       )}
     />
   ));
