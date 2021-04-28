@@ -6,6 +6,9 @@ import ListItem from './ListItem';
 
 storiesOf('ListItem', module)
   .addDecorator(story => <View style={{padding: 20}}>{story()}</View>)
-  .add('Category List Item', () => (
-    <ListItem text={'All'} onPress={action('clicked learn button')} />
+  .add('Category List Item', ({title}) => (
+    <ListItem
+      text={title ? `${title}` : 'All'}
+      onPress={action('clicked learn button')}
+    />
   ));
