@@ -4,12 +4,12 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {View, Image, Text} from 'react-native';
 import {Icon} from 'react-native-elements';
-import List from './List';
+import ListItem from './ListItem';
 
-storiesOf('List', module)
+storiesOf('ListItem', module)
   .addDecorator(story => <View style={{alignItems: 'center'}}>{story()}</View>)
   .add('Category List', () => (
-    <List
+    <ListItem
       data={[
         {key: 'All'},
         {key: 'Food'},

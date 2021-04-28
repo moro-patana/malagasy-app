@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function List({data, onPress = () => {}}) {
+export default function ListItem({data, onPress = () => {}}) {
   return (
     <View style={styles.container}>
       <FlatList
