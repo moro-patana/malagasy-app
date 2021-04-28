@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ListItem({data, onPress = () => {}}) {
+export default function ListItem({text, onPress = () => {}}) {
   return (
     <View style={styles.list}>
-      <Text style={styles.listText}>{data}</Text>
+      <Text style={styles.listText}>{text}</Text>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>Learn</Text>
         <Icon type="material-community" name="arrow-right" color="#06B6D4" />
