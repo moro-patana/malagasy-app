@@ -5,7 +5,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import List from '../components/List/List';
 import ListItem from '../components/ListItem/ListItem';
 import data from '../data/categories.json';
-import ToolButton from '../components/ToolButton/ToolButton';
 
 export default function Home() {
   return (
