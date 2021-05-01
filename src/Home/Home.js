@@ -12,17 +12,29 @@ const styles = StyleSheet.create({
     paddingVertical: 35,
   },
 });
-export default function Home({name, color, onPress = () => {}, label}) {
+export default function Home({
+  name,
+  color,
+  onPress = () => {},
+  textColor,
+  switchTheme,
+  listTheme,
+}) {
   return (
     <SafeAreaView style={styles.container}>
       <ToolButton
         type="material-community"
         name={name}
-        color={color}
+        color={textColor}
         onPress={onPress}
+        switchTheme={switchTheme}
       />
-      <SectionHeading label="Select a category:" />
-      <List data={data.categories} />
+      <SectionHeading label="Select a category:" textColor={textColor} />
+      <List
+        data={data.categories}
+        textColor={textColor}
+        listTheme={listTheme}
+      />
     </SafeAreaView>
   );
 }
