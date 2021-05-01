@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -56,14 +56,35 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const [theme, setTheme] = useState('#FFFFFF');
+  const [textColor, setTextColor] = useState('#1F232C');
+  const [listTheme, setListTheme] = useState('##111827');
+
+  function switchTheme() {
+    if (theme === '#FFFFFF') {
+      setTheme('#1F232C');
+      setTextColor('#FFFFFF');
+      setListTheme('#111827');
+    }
+    if (theme === 'black') {
+      setTheme('#FFFFFF');
+      setTextColor('black');
+      setListTheme('#FFFFFF');
+    }
+  }
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    <View>
-      <Home />
+    <View style={[{backgroundColor: `${theme}`}, {color: `${theme}`}]}>
+      <Home
+        switchTheme={switchTheme}
+        theme={theme}
+        textColor={textColor}
+        listTheme={listTheme}
+      />
     </View>
   );
 };
