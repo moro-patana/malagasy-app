@@ -1,16 +1,28 @@
 import {action} from '@storybook/addon-actions';
 import * as React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Icon} from 'react-native-elements';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import List from '../components/List/List';
 import data from '../data/categories.json';
 import ToolButton from '../components/ToolButton/ToolButton';
+import SectionHeading from '../components/SectionHeading/SectionHeading';
 
-export default function Home() {
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 23,
+    paddingVertical: 35,
+  },
+});
+export default function Home({name, color, onPress = () => {}, label}) {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <ToolButton
+        type="material-community"
+        name={name}
+        color={color}
+        onPress={onPress}
+      />
+      <SectionHeading label="Select a category:" />
       <List data={data.categories} />
-      <ToolButton />
     </SafeAreaView>
   );
 }
