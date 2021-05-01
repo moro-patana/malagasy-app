@@ -56,18 +56,18 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
-  const [theme, setTheme] = useState('#FFFFFF');
+  const [theme, setTheme] = useState('#E5E5E5');
   const [textColor, setTextColor] = useState('#1F232C');
   const [listTheme, setListTheme] = useState('##111827');
 
   function switchTheme() {
-    if (theme === '#FFFFFF') {
+    if (theme === '#E5E5E5') {
       setTheme('#1F232C');
       setTextColor('#FFFFFF');
       setListTheme('#111827');
     }
     if (theme === '#1F232C') {
-      setTheme('#FFFFFF');
+      setTheme('#E5E5E5');
       setTextColor('black');
       setListTheme('#FFFFFF');
     }
