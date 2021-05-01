@@ -12,13 +12,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
     lineHeight: 22,
-    // color: '#111827',
   },
 });
 export default function SectionHeading({label, textColor}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{color: `${textColor}`}}>{label}</Text>
+      <Text style={[styles.text, {color: `${textColor}`}]}>{label}</Text>
     </SafeAreaView>
   );
 }
