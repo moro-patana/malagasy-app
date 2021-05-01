@@ -66,7 +66,7 @@ const App: () => Node = () => {
       setTextColor('#FFFFFF');
       setListTheme('#111827');
     }
-    if (theme === 'black') {
+    if (theme === '#1F232C') {
       setTheme('#FFFFFF');
       setTextColor('black');
       setListTheme('#FFFFFF');
