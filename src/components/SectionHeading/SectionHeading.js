@@ -3,7 +3,8 @@ import {Text, SafeAreaView, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingTop: 56,
+    paddingBottom: 15,
   },
   text: {
     fontFamily: 'Inter',
