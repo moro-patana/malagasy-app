@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: 16,
     lineHeight: 19,
-    color: '#111827',
   },
   button: {
     display: 'flex',
@@ -36,10 +35,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ListItem({text, onPress = () => {}}) {
+export default function ListItem({text, onPress = () => {}, textColor}) {
   return (
     <View style={styles.list}>
-      <Text style={styles.listText}>{text}</Text>
+      <Text style={[styles.listText, {color: `${textColor}`}]}>{text}</Text>
       <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>Learn</Text>
         <Icon type="material-community" name="arrow-right" color="#06B6D4" />
