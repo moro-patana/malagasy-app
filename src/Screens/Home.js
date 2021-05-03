@@ -1,27 +1,20 @@
-import {action} from '@storybook/addon-actions';
 import * as React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import List from '../components/List/List';
+import {View} from 'react-native';
 import data from '../data/categories.json';
+import List from '../components/List/List';
 import ToolButton from '../components/ToolButton/ToolButton';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 23,
-    paddingVertical: 35,
-  },
-});
 export default function Home({
+  navigation,
   name,
-  color,
-  onPress = () => {},
-  textColor,
+  onPress,
   switchTheme,
+  textColor,
   listTheme,
 }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={{flex: 1, padding: 23}}>
       <ToolButton
         type="material-community"
         name={name}
@@ -34,7 +27,8 @@ export default function Home({
         data={data.categories}
         textColor={textColor}
         listTheme={listTheme}
+        onPress={() => navigation.navigate('Details')}
       />
-    </SafeAreaView>
+    </View>
   );
 }
