@@ -11,10 +11,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View, Text} from 'react-native';
 import Home from './src/Screens/Home';
+import ToolButton from './src/components/ToolButton/ToolButton';
 function DetailsScreen() {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Details Screen</Text>
+      <ToolButton />
     </View>
   );
 }
