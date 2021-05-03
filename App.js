@@ -25,7 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Home from './src/Home/Home';
+import Home from './src/Screens/Home';
 import List from './src/components/List/List';
 
 const Section = ({children, title}): Node => {
