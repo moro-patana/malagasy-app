@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ToolButton({type, onPress, switchTheme}) {
+export default function ToolButton({type, onPress}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.button}>
@@ -36,7 +36,7 @@ export default function ToolButton({type, onPress, switchTheme}) {
       <TouchableOpacity onPress={onPress} style={styles.button}>
         <Icon type={type} name="check-all" color="#FFFFFF" />
       </TouchableOpacity>
-      <TouchableOpacity onPress={switchTheme} style={styles.button}>
+      <TouchableOpacity onPress={onPress} style={styles.button}>
         <Icon type={type} name="brightness-6" color="#FFFFFF" />
       </TouchableOpacity>
     </View>
