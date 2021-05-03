@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ListItem({text, onPress = () => {}, textColor}) {
+export default function ListItem({text, textColor, onPress}) {
   return (
     <View style={styles.list}>
       <Text style={[styles.listText, {color: `${textColor}`}]}>{text}</Text>
