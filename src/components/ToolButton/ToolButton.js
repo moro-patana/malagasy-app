@@ -16,28 +16,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ToolButton({type, onPress}) {
+export default function ToolButton({type, onPress, name}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Icon type={type} name="plus" color="#FFFFFF" />
-      </TouchableOpacity>
-      <LanguageSwitch
-        text1="EN"
-        type="material-community"
-        name="swap-horizontal"
-        color="#FFFFFF"
-        onPress={onPress}
-        text2="MA"
-      />
-      <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Icon type={type} name="check" color="#FFFFFF" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Icon type={type} name="check-all" color="#FFFFFF" />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Icon type={type} name="brightness-6" color="#FFFFFF" />
+        <Icon type={type} name={name} color="#FFFFFF" />
       </TouchableOpacity>
     </View>
   );
