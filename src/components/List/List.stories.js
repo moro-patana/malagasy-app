@@ -14,7 +14,7 @@ storiesOf('List', module)
       renderItem={({item}) => (
         <ListItem
           text={item.name.en}
-          onPress={action(`clicked ${item.name.en}`)}
+          onPress={() => navigation.navigate('Details')}
         />
       )}
     />
