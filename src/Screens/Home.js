@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-export default function Home({navigation, name, onPress, textColor}) {
+export default function Home({navigation, value, onPress, textColor}) {
   return (
     <View style={{flex: 1, padding: 23}}>
       <View style={styles.buttonContainer}>
@@ -51,11 +51,16 @@ export default function Home({navigation, name, onPress, textColor}) {
         />
       </View>
 
-      <SectionHeading label="Select a category:" textColor={textColor} />
+      <SectionHeading
+        label="Select a category:"
+        value={value}
+        textColor={textColor}
+      />
       <List
         data={data.categories}
         textColor={textColor}
-        onPress={() => navigation.push('Learn')}
+        onPress={onPress}
+        navigation={navigation}
       />
     </View>
   );
