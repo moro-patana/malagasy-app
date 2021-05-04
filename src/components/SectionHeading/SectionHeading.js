@@ -14,10 +14,13 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
 });
-export default function SectionHeading({label}) {
+export default function SectionHeading({label, value}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={[styles.text, {color: '#111827'}]}>{label}</Text>
+      <Text style={[styles.text, {color: '#111827'}]}>
+        {label}
+        {value}
+      </Text>
     </SafeAreaView>
   );
 }
