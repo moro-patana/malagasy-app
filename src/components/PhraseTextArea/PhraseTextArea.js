@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   input: {
-    fontFamily: "Inter",
-    fontStyle: "normal",
-    fontWeight: "normal",
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     fontSize: 20,
     lineHeight: 24,
-    textAlign: "center",
-    color: "rgba(17, 24, 39, 0.5)",
+    textAlign: 'center',
+    color: 'rgba(17, 24, 39, 0.5)',
   },
   textarea: {
     color: '#111827',
