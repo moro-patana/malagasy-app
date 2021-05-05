@@ -6,6 +6,7 @@ import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
 import ActionButtons from '../components/ActionButtons/ActionButtons';
 import PhraseData from '../data/phrases.json';
+import data from '../data/categories.json';
 const styles = StyleSheet.create({
   buttonContainer: {
     display: 'flex',
@@ -15,9 +16,22 @@ const styles = StyleSheet.create({
 
 export default function Learn({onPress, navigation, onChange, style, route}) {
   console.log(route.params.text);
-  const mapItem = PhraseData.phrases.find(
-    item => item.id === route.params.itemId,
+  const option1 = PhraseData.phrases.find(
+    item => item.id === route.params.itemId1,
   );
+  const option2 = PhraseData.phrases.find(
+    item => item.id === route.params.itemId2,
+  );
+  const option3 = PhraseData.phrases.find(
+    item => item.id === route.params.itemId3,
+  );
+  const option4 = PhraseData.phrases.find(
+    item => item.id === route.params.itemId4,
+  );
+  const answerOptions = [option3, option1, option2, option4].sort(() => {
+    return 0.5 - Math.random();
+  });
+  console.log(answerOptions);
   return (
     <View style={{flex: 1, padding: 23}}>
       <View style={styles.buttonContainer}>
@@ -46,13 +60,13 @@ export default function Learn({onPress, navigation, onChange, style, route}) {
       <SectionHeading label="The phrase:" />
       <PhraseTextArea
         style={style}
-        phrase={mapItem.name.mg}
+        phrase={option1.name.mg}
         editable={false}
         onChangeText={onChange}
         multiline={true}
       />
       <SectionHeading label="Pick a solution:" />
-      {PhraseData.phrases.slice(0, 4).map(item => (
+      {answerOptions.map(item => (
         <View key={item.id}>
           <ActionButtons
             optionText={item.name.en}
