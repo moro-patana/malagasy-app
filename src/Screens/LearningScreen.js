@@ -1,12 +1,11 @@
 import React, {useRef, useState} from 'react';
-import {View, StyleSheet, Button, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitch from '../components/LanguageSwitch/LanguageSwitch';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
 import ActionButtons from '../components/ActionButtons/ActionButtons';
 import PhraseData from '../data/phrases.json';
-import NextButton from '../components/NextButton/NextButton';
 
 const styles = StyleSheet.create({
   buttonContainer: {
