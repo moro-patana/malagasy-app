@@ -3,7 +3,8 @@ import {Text, SafeAreaView, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingTop: 56,
+    paddingBottom: 15,
   },
   text: {
     fontFamily: 'Inter',
@@ -11,13 +12,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
     lineHeight: 22,
-    color: '#111827',
   },
 });
-export default function SectionHeading({label}) {
+export default function SectionHeading({label, value}) {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>{label}</Text>
+      <Text style={[styles.text, {color: '#111827'}]}>
+        {label}
+        {value}
+      </Text>
     </SafeAreaView>
   );
 }

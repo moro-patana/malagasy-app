@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginRight: 10,
   },
   text: {
     fontFamily: 'Inter',
