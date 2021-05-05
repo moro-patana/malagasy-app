@@ -17,7 +17,10 @@ export default function List({data, text, onPress, navigation}) {
             onPress={() => {
               navigation.navigate('Learn', {
                 text: item.name.en,
-                itemId: item.phrasesIds[0],
+                itemId1: item.phrasesIds[0],
+                itemId2: item.phrasesIds[1],
+                itemId3: item.phrasesIds[2],
+                itemId4: item.phrasesIds[3],
               });
             }}
           />
