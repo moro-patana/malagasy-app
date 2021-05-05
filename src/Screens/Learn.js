@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
 });
 
 export default function Learn({onPress, navigation, onChange, style, route}) {
-  console.log(route.params.text);
   const option1 = PhraseData.phrases.find(
     item => item.id === route.params.itemId1,
   );
@@ -31,7 +30,6 @@ export default function Learn({onPress, navigation, onChange, style, route}) {
   const answerOptions = [option3, option1, option2, option4].sort(() => {
     return 0.5 - Math.random();
   });
-  console.log(answerOptions);
   return (
     <View style={{flex: 1, padding: 23}}>
       <View style={styles.buttonContainer}>
