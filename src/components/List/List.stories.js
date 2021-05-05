@@ -12,7 +12,7 @@ storiesOf('List', module)
     <List
       data={data.categories}
       renderItem={({item}) => (
-        <ListItem text={item.name.en} onPress={() => console.log(item.name)} />
+        <ListItem text={item.name.en} onPress={onPress} />
       )}
     />
   ));
