@@ -13,7 +13,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Learn({onPress, navigation, onChange, style, route}) {
+export default function LearnScreen({
+  onPress,
+  navigation,
+  onChange,
+  style,
+  route,
+}) {
   const option1 = PhraseData.phrases.find(
     item => item.id === route.params.itemId1,
   );
