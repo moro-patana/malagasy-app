@@ -32,9 +32,26 @@ export default function ActionButtons({
   name,
   color,
   onPress = () => {},
+  option1,
+  listRef,
+  selectAnswer,
+  setIsCorrect,
+  isCorrect,
 }) {
+  function selectAnswer(e) {
+    if (optionText === option1.name.en) {
+      setIsCorrect(true);
+      console.log('true');
+    } else {
+      console.log('false');
+      setIsCorrect(false);
+    }
+  }
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity
+      onPress={selectAnswer}
+      style={styles.container}
+      ref={optionText === option1.name.en ? listRef : null}>
       <Text>{optionText}</Text>
       <View style={styles.buttonContainer}>
         <Text style={[styles.text, {color: `${color}`}]}>{text}</Text>
