@@ -1,25 +1,30 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {View, StyleSheet, Button, Text} from 'react-native';
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitch from '../components/LanguageSwitch/LanguageSwitch';
 import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
 import ActionButtons from '../components/ActionButtons/ActionButtons';
 import PhraseData from '../data/phrases.json';
+import NextButton from '../components/NextButton/NextButton';
+
 const styles = StyleSheet.create({
   buttonContainer: {
     display: 'flex',
     flexDirection: 'row',
   },
 });
-
 export default function LearnScreen({
-  onPress,
+  onPress = () => {},
   navigation,
   onChange,
+  optionText,
   style,
   route,
 }) {
+  const listRef = useRef();
+  const [isCorrect, setIsCorrect] = useState(false);
+
   const option1 = PhraseData.phrases.find(
     item => item.id === route.params.itemId1,
   );
@@ -35,6 +40,7 @@ export default function LearnScreen({
   const answerOptions = [option3, option1, option2, option4].sort(() => {
     return 0.5 - Math.random();
   });
+
   return (
     <View style={{flex: 1, padding: 23}}>
       <View style={styles.buttonContainer}>
@@ -78,6 +84,10 @@ export default function LearnScreen({
             onPress={onPress}
             type="material-community"
             name="arrow-right"
+            option1={option1}
+            listRef={listRef}
+            setIsCorrect={setIsCorrect}
+            isCorrect={isCorrect}
           />
         </View>
       ))}
