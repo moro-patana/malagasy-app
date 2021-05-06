@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitch from '../components/LanguageSwitch/LanguageSwitch';
@@ -6,7 +6,7 @@ import SectionHeading from '../components/SectionHeading/SectionHeading';
 import PhraseTextArea from '../components/PhraseTextArea/PhraseTextArea';
 import ActionButtons from '../components/ActionButtons/ActionButtons';
 import PhraseData from '../data/phrases.json';
-
+import NextButton from '../components/NextButton/NextButton';
 const styles = StyleSheet.create({
   buttonContainer: {
     display: 'flex',
@@ -17,29 +17,46 @@ export default function LearnScreen({
   onPress = () => {},
   navigation,
   onChange,
-  optionText,
+  disabled,
   style,
   route,
 }) {
-  const listRef = useRef();
+  const listRef = useRef(null);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [answerText, setAnswerText] = useState([]);
+  const [phrase, setPhrase] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
+  function getData() {
+    let indexes = new Set([
+      Math.floor(Math.random() * route.params.itemId1.length),
+    ]);
+    while (indexes.size < 4) {
+      indexes.add(Math.floor(Math.random() * route.params.itemId1.length));
+    }
+    indexes = [...indexes];
+    const answerOption1 = route.params.itemId1[indexes[0]];
+    const answerOption2 = route.params.itemId1[indexes[1]];
+    const answerOption3 = route.params.itemId1[indexes[2]];
+    const answerOption4 = route.params.itemId1[indexes[3]];
+    const option1 = PhraseData.phrases.find(item => item.id === answerOption1);
+    const option2 = PhraseData.phrases.find(item => item.id === answerOption2);
+    const option3 = PhraseData.phrases.find(item => item.id === answerOption3);
+    const option4 = PhraseData.phrases.find(item => item.id === answerOption4);
+    const answerOptions = [option3, option1, option4, option2].sort(() => {
+      return 0.5 - Math.random();
+    });
+    setAnswerText(answerOptions);
+    setPhrase(option1);
+  }
 
-  const option1 = PhraseData.phrases.find(
-    item => item.id === route.params.itemId1,
-  );
-  const option2 = PhraseData.phrases.find(
-    item => item.id === route.params.itemId2,
-  );
-  const option3 = PhraseData.phrases.find(
-    item => item.id === route.params.itemId3,
-  );
-  const option4 = PhraseData.phrases.find(
-    item => item.id === route.params.itemId4,
-  );
-  const answerOptions = [option3, option1, option2, option4].sort(() => {
-    return 0.5 - Math.random();
-  });
+  useEffect(() => {
+    getData();
+  }, []);
 
+  function nextPhrase() {
+    getData();
+    setIsCorrect(false);
+  }
   return (
     <View style={{flex: 1, padding: 23}}>
       <View style={styles.buttonContainer}>
@@ -68,13 +85,13 @@ export default function LearnScreen({
       <SectionHeading label="The phrase:" />
       <PhraseTextArea
         style={style}
-        phrase={option1.name.mg}
+        phrase={phrase?.name?.mg}
         editable={false}
         onChangeText={onChange}
         multiline={true}
       />
       <SectionHeading label="Pick a solution:" />
-      {answerOptions.map(item => (
+      {answerText.map(item => (
         <View key={item.id}>
           <ActionButtons
             optionText={item.name.en}
@@ -83,13 +100,24 @@ export default function LearnScreen({
             onPress={onPress}
             type="material-community"
             name="arrow-right"
-            option1={option1}
             listRef={listRef}
             setIsCorrect={setIsCorrect}
             isCorrect={isCorrect}
+            phrase={phrase}
+            getData={getData}
+            isClicked={isClicked}
+            setIsClicked={setIsClicked}
           />
         </View>
       ))}
+      {isCorrect && (
+        <NextButton
+          text="Next"
+          style={style}
+          onPress={nextPhrase}
+          disabled={disabled}
+        />
+      )}
     </View>
   );
 }
