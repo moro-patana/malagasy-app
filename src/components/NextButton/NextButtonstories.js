@@ -7,8 +7,9 @@ import NextButton from './NextButton';
 storiesOf('ActionButton', module)
   .addDecorator(story => <View style={{alignItems: 'center'}}>{story()}</View>)
   .add('next button', () => (
-    <NextButton onPress={action('clicked next button')}>Next</NextButton>
+    <NextButton onPress={action('clicked next button')} text="Next" />
   ));
-z.add('add button', () => (
-  <NextButton onPress={action('clicked add button')}>Add</NextButton>
-)).add('disabled button', () => <NextButton disabled>Add</NextButton>);
+// .add('add button', () => (
+//   <NextButton onPress={action('clicked add button')}>Add</NextButton>
+// ))
+// .add('disabled button', () => <NextButton disabled>Add</NextButton>);
