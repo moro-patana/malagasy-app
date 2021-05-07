@@ -20,16 +20,15 @@ export default function LearnScreen({
   disabled,
   style,
   route,
+  text,
+  name,
 }) {
-  // const [isCorrect, setIsCorrect] = useState(false);
   const [answerText, setAnswerText] = useState([]);
-  const [phrase, setPhrase] = useState([]);
+  const [phrase, setPhrase] = useState({});
   const [isClicked, setIsClicked] = useState(false);
+  const [target, setTarget] = useState({});
+  const [wrongAnswer, setWrongAnswer] = useState({});
   function getData() {
-    const randomisePhrase =
-      route.params.itemId1[
-        Math.floor(Math.random() * route.params.itemId1.length)
-      ];
     let indexes = new Set([
       Math.floor(Math.random() * route.params.itemId1.length),
     ]);
@@ -58,7 +57,6 @@ export default function LearnScreen({
 
   function nextPhrase() {
     getData();
-    setIsCorrect(false);
     setIsClicked(false);
   }
   return (
@@ -99,22 +97,20 @@ export default function LearnScreen({
         <View key={item.id}>
           <ActionButtons
             optionText={item.name.en}
-            text={
-              isClicked && item.name.en === phrase?.name.en ? 'Correct' : 'Pick'
-            }
+            text={text}
             color="#06B6D4"
             onPress={onPress}
             type="material-community"
-            name={
-              isClicked && item.name.en === phrase?.name.en
-                ? 'check'
-                : 'arrow-right'
-            }
+            name={name}
             phrase={phrase}
             getData={getData}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
             item={item}
+            target={target}
+            setTarget={setTarget}
+            wrongAnswer={wrongAnswer}
+            setWrongAnswer={setWrongAnswer}
           />
         </View>
       ))}

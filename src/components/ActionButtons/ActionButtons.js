@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
   },
 });
 export default function ActionButtons({
-  text,
   optionText,
   name,
   color,
@@ -35,17 +34,20 @@ export default function ActionButtons({
   isClicked,
   setIsClicked,
   item,
+  setTarget,
+  wrongAnswer,
+  setWrongAnswer,
 }) {
   function selectAnswer(e) {
-    console.log(e);
     if (optionText === phrase?.name.en) {
       setIsClicked(true);
-    }
-    if (e.target !== phrase?.name.en) {
+    } else {
       setIsClicked(true);
-      console.log(false);
+      setTarget(e);
+      setWrongAnswer(e);
     }
   }
+  const wrong = isClicked && wrongAnswer !== phrase && wrongAnswer === item;
   return (
     <TouchableOpacity
       onPress={() => selectAnswer(item)}
@@ -57,18 +59,26 @@ export default function ActionButtons({
             styles.text,
             {
               color:
-                isClicked && optionText === phrase?.name.en
+                isClicked && phrase === item
                   ? 'green'
+                  : wrong
+                  ? 'red'
                   : `${color}`,
             },
           ]}>
-          {text}
+          {isClicked && phrase === item ? 'Correct' : wrong ? 'Wrong' : 'Pick'}
         </Text>
         <Icon
           type="material-community"
-          name={name}
+          name={
+            isClicked && phrase === item
+              ? 'check'
+              : wrong
+              ? 'close'
+              : 'arrow-right'
+          }
           color={
-            isClicked && optionText === phrase?.name.en ? 'green' : `${color}`
+            isClicked && phrase === item ? 'green' : wrong ? 'red' : `${color}`
           }
         />
       </View>
