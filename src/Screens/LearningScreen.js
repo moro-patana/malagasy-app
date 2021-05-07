@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import ToolButton from '../components/ToolButton/ToolButton';
 import LanguageSwitch from '../components/LanguageSwitch/LanguageSwitch';
@@ -21,7 +21,6 @@ export default function LearnScreen({
   style,
   route,
 }) {
-  const listRef = useRef(null);
   const [isCorrect, setIsCorrect] = useState(false);
   const [answerText, setAnswerText] = useState([]);
   const [phrase, setPhrase] = useState([]);
@@ -111,7 +110,6 @@ export default function LearnScreen({
                 ? 'check'
                 : 'arrow-right'
             }
-            listRef={listRef}
             setIsCorrect={setIsCorrect}
             isCorrect={isCorrect}
             phrase={phrase}

@@ -38,7 +38,6 @@ export default function ActionButtons({
   name,
   color,
   phrase,
-  listRef,
   setIsCorrect,
   isClicked,
   setIsClicked,
@@ -54,10 +53,7 @@ export default function ActionButtons({
     }
   }
   return (
-    <TouchableOpacity
-      onPress={selectAnswer}
-      style={styles.container}
-      ref={listRef}>
+    <TouchableOpacity onPress={selectAnswer} style={styles.container}>
       <Text>{optionText}</Text>
       <View style={styles.buttonContainer}>
         <Text
