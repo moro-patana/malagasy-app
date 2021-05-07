@@ -21,7 +21,7 @@ export default function LearnScreen({
   style,
   route,
 }) {
-  const [isCorrect, setIsCorrect] = useState(false);
+  // const [isCorrect, setIsCorrect] = useState(false);
   const [answerText, setAnswerText] = useState([]);
   const [phrase, setPhrase] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
@@ -110,8 +110,6 @@ export default function LearnScreen({
                 ? 'check'
                 : 'arrow-right'
             }
-            setIsCorrect={setIsCorrect}
-            isCorrect={isCorrect}
             phrase={phrase}
             getData={getData}
             isClicked={isClicked}
@@ -120,7 +118,7 @@ export default function LearnScreen({
           />
         </View>
       ))}
-      {isCorrect && (
+      {isClicked && (
         <View
           style={{
             display: 'flex',
