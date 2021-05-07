@@ -26,15 +26,11 @@ export default function LearnScreen({
   const [answerText, setAnswerText] = useState([]);
   const [phrase, setPhrase] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-  const [blue, setBlue] = useState(true);
-  const [green, setGreen] = useState(false);
-  const [red, setRed] = useState(false);
   function getData() {
     const randomisePhrase =
       route.params.itemId1[
         Math.floor(Math.random() * route.params.itemId1.length)
       ];
-    console.log(randomisePhrase);
     let indexes = new Set([
       Math.floor(Math.random() * route.params.itemId1.length),
     ]);
@@ -55,7 +51,6 @@ export default function LearnScreen({
     });
     setAnswerText(answerOptions);
     setPhrase(option1);
-    console.log(route.params.itemId1);
   }
 
   useEffect(() => {
@@ -65,6 +60,7 @@ export default function LearnScreen({
   function nextPhrase() {
     getData();
     setIsCorrect(false);
+    setIsClicked(false);
   }
   return (
     <View style={{flex: 1, padding: 23}}>
@@ -100,16 +96,15 @@ export default function LearnScreen({
         multiline={true}
       />
       <SectionHeading label="Pick a solution:" />
-      {answerText.map(item => (
+      {answerText.map((item, index) => (
         <View key={item.id}>
           <ActionButtons
             optionText={item.name.en}
-            text="Pick"
+            text={isClicked ? 'correct' : 'Pick'}
             color="#06B6D4"
             onPress={onPress}
             type="material-community"
-            name="arrow-right"
-            value={item.name.en}
+            name={isClicked ? 'check' : 'arrow-right'}
             listRef={listRef}
             setIsCorrect={setIsCorrect}
             isCorrect={isCorrect}
@@ -117,12 +112,6 @@ export default function LearnScreen({
             getData={getData}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
-            blue={blue}
-            setBlue={setBlue}
-            green={green}
-            setGreen={setGreen}
-            red={red}
-            setRed={setRed}
           />
         </View>
       ))}
