@@ -40,6 +40,7 @@ export default function ActionButtons({
   phrase,
   listRef,
   setIsCorrect,
+  isClicked,
   setIsClicked,
 }) {
   function selectAnswer(e) {
@@ -59,8 +60,25 @@ export default function ActionButtons({
       ref={listRef}>
       <Text>{optionText}</Text>
       <View style={styles.buttonContainer}>
-        <Text style={[styles.text, {color: `${color}`}]}>{text}</Text>
-        <Icon type="material-community" name={name} color={color} />
+        <Text
+          style={[
+            styles.text,
+            {
+              color:
+                isClicked && optionText === phrase?.name.en
+                  ? 'green'
+                  : `${color}`,
+            },
+          ]}>
+          {text}
+        </Text>
+        <Icon
+          type="material-community"
+          name={name}
+          color={
+            isClicked && optionText === phrase?.name.en ? 'green' : `${color}`
+          }
+        />
       </View>
     </TouchableOpacity>
   );
