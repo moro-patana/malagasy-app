@@ -42,9 +42,11 @@ export default function ActionButtons({
     if (optionText === phrase?.name.en) {
       setIsClicked(true);
       setIsCorrect(true);
-    } else {
+    }
+    if (e.target !== phrase?.name.en) {
       setIsCorrect(true);
       setIsClicked(true);
+      console.log(false);
     }
   }
   return (
