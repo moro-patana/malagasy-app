@@ -104,7 +104,11 @@ export default function LearnScreen({
             color="#06B6D4"
             onPress={onPress}
             type="material-community"
-            name={isClicked ? 'check' : 'arrow-right'}
+            name={
+              isClicked && item.name.en === phrase?.name.en
+                ? 'check'
+                : 'arrow-right'
+            }
             listRef={listRef}
             setIsCorrect={setIsCorrect}
             isCorrect={isCorrect}
