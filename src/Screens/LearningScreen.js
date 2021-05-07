@@ -100,7 +100,9 @@ export default function LearnScreen({
         <View key={item.id}>
           <ActionButtons
             optionText={item.name.en}
-            text={isClicked ? 'correct' : 'Pick'}
+            text={
+              isClicked && item.name.en === phrase?.name.en ? 'Correct' : 'Pick'
+            }
             color="#06B6D4"
             onPress={onPress}
             type="material-community"
