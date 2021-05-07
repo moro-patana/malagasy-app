@@ -116,6 +116,7 @@ export default function LearnScreen({
             getData={getData}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
+            item={item}
           />
         </View>
       ))}

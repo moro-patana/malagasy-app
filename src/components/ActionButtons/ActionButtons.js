@@ -25,12 +25,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
   },
-  green: {
-    backgroundColor: 'green',
-  },
-  red: {
-    backgroundColor: 'red',
-  },
 });
 export default function ActionButtons({
   text,
@@ -41,9 +35,10 @@ export default function ActionButtons({
   setIsCorrect,
   isClicked,
   setIsClicked,
+  item,
 }) {
   function selectAnswer(e) {
-    e.preventDefault();
+    console.log(e);
     if (optionText === phrase?.name.en) {
       setIsClicked(true);
       setIsCorrect(true);
@@ -53,7 +48,9 @@ export default function ActionButtons({
     }
   }
   return (
-    <TouchableOpacity onPress={selectAnswer} style={styles.container}>
+    <TouchableOpacity
+      onPress={() => selectAnswer(item)}
+      style={styles.container}>
       <Text>{optionText}</Text>
       <View style={styles.buttonContainer}>
         <Text
