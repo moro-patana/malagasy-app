@@ -32,7 +32,6 @@ export default function ActionButtons({
   name,
   color,
   phrase,
-  setIsCorrect,
   isClicked,
   setIsClicked,
   item,
@@ -41,10 +40,8 @@ export default function ActionButtons({
     console.log(e);
     if (optionText === phrase?.name.en) {
       setIsClicked(true);
-      setIsCorrect(true);
     }
     if (e.target !== phrase?.name.en) {
-      setIsCorrect(true);
       setIsClicked(true);
       console.log(false);
     }
