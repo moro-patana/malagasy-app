@@ -26,11 +26,19 @@ export default function LearnScreen({
   const [answerText, setAnswerText] = useState([]);
   const [phrase, setPhrase] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+  const [blue, setBlue] = useState(true);
+  const [green, setGreen] = useState(false);
+  const [red, setRed] = useState(false);
   function getData() {
+    const randomisePhrase =
+      route.params.itemId1[
+        Math.floor(Math.random() * route.params.itemId1.length)
+      ];
+    console.log(randomisePhrase);
     let indexes = new Set([
       Math.floor(Math.random() * route.params.itemId1.length),
     ]);
-    while (indexes.size < 4) {
+    while (indexes.size < route.params.itemId1.length) {
       indexes.add(Math.floor(Math.random() * route.params.itemId1.length));
     }
     indexes = [...indexes];
@@ -47,6 +55,7 @@ export default function LearnScreen({
     });
     setAnswerText(answerOptions);
     setPhrase(option1);
+    console.log(route.params.itemId1);
   }
 
   useEffect(() => {
@@ -81,7 +90,7 @@ export default function LearnScreen({
           onPress={onPress}
         />
       </View>
-      <SectionHeading label="Category:" value={route.params.text} />
+      <SectionHeading label="Category: " value={route.params.text} />
       <SectionHeading label="The phrase:" />
       <PhraseTextArea
         style={style}
@@ -100,6 +109,7 @@ export default function LearnScreen({
             onPress={onPress}
             type="material-community"
             name="arrow-right"
+            value={item.name.en}
             listRef={listRef}
             setIsCorrect={setIsCorrect}
             isCorrect={isCorrect}
@@ -107,16 +117,29 @@ export default function LearnScreen({
             getData={getData}
             isClicked={isClicked}
             setIsClicked={setIsClicked}
+            blue={blue}
+            setBlue={setBlue}
+            green={green}
+            setGreen={setGreen}
+            red={red}
+            setRed={setRed}
           />
         </View>
       ))}
       {isCorrect && (
-        <NextButton
-          text="Next"
-          style={style}
-          onPress={nextPhrase}
-          disabled={disabled}
-        />
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            paddingHorizontal: 150,
+          }}>
+          <NextButton
+            text="Next"
+            style={style}
+            onPress={nextPhrase}
+            disabled={disabled}
+          />
+        </View>
       )}
     </View>
   );
