@@ -83,7 +83,7 @@ export default function LearnScreen({
           onPress={onPress}
         />
       </View>
-      <SectionHeading label="Category: " />
+      <SectionHeading label="Category: " value={route.params.text} />
       <SectionHeading label="The phrase:" />
       <PhraseTextArea
         style={style}
