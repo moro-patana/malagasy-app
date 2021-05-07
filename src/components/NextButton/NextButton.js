@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
 });
 
 export default function NextButton({
-  children,
   text,
   onPress = () => {},
   disabled = false,
