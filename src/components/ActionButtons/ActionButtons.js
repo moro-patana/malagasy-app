@@ -60,9 +60,9 @@ export default function ActionButtons({
             {
               color:
                 isClicked && phrase === item
-                  ? 'green'
+                  ? '#06D440'
                   : wrong
-                  ? 'red'
+                  ? '#D4068E'
                   : `${color}`,
             },
           ]}>
@@ -78,7 +78,11 @@ export default function ActionButtons({
               : 'arrow-right'
           }
           color={
-            isClicked && phrase === item ? 'green' : wrong ? 'red' : `${color}`
+            isClicked && phrase === item
+              ? '#06D440'
+              : wrong
+              ? '#D4068E'
+              : `${color}`
           }
         />
       </View>
